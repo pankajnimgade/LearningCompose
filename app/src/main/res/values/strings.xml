@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ComposeTest101</string>
+    <string name="title_activity_compose102">Compose102Activity</string>
+    <string name="hello_me">"Hello Me:) "</string>
 </resources>
