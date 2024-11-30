@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,13 +31,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composetest101.compose.test102.ui.theme.ComposeTest101Theme
 
+/**
+ * https://developer.android.com/codelabs/basic-android-kotlin-compose-viewmodel-and-state#4
+ */
 class Compose103Activity : ComponentActivity() {
+
+    lateinit var viewModel: GameViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = GameViewModel()
         setContent {
             ComposeTest101Theme {
-                GameLayout()
+                GameLayout(viewModel)
             }
         }
     }
@@ -43,7 +51,7 @@ class Compose103Activity : ComponentActivity() {
 }
 
 @Composable
-private fun GameLayout() {
+private fun GameLayout(viewModel: GameViewModel) {
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -87,12 +95,13 @@ private fun GameLayout() {
             )
 
             OutlinedTextField(
-                value = "",
+                value = viewModel.uiState.collectAsState().value.currentWord,
                 singleLine = true,
                 shape = MaterialTheme.shapes.large,
                 modifier = Modifier
                     .padding(10.dp)
-                    .fillMaxWidth(0.9f).align(Alignment.CenterHorizontally),
+                    .fillMaxWidth(0.9f)
+                    .align(Alignment.CenterHorizontally),
                 onValueChange = { currentText ->
                     Log.d("TAG", "GameLayout: $currentText")
                 },
@@ -106,6 +115,16 @@ private fun GameLayout() {
                     imeAction = ImeAction.Done
                 )
             )
+
+            Button(modifier = Modifier
+                .padding(4.dp)
+                .fillMaxWidth(0.9f)
+                .align(Alignment.CenterHorizontally),
+                onClick = {
+                    viewModel.updateSomeWord()
+                }) {
+                Text("Get new word")
+            }
         }
     }
 }
@@ -113,5 +132,5 @@ private fun GameLayout() {
 @Preview
 @Composable
 private fun GameLayoutPreview() {
-    GameLayout()
+    GameLayout(GameViewModel())
 }
