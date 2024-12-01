@@ -10,6 +10,7 @@ import com.example.composetest101.compose.test101.Compose101Activity
 import com.example.composetest101.compose.test102.Compose102Activity
 import com.example.composetest101.compose.test103.Compose103Activity
 import com.example.composetest101.compose.test104.Compose104Activity
+import com.example.composetest101.compose.test105.Compose105Activity
 
 class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
 
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
 
     private fun getListOfActivities(): List<ActivityItem> {
         val list: MutableList<ActivityItem> = mutableListOf()
+        list.add(ActivityItem("Compose105Activity", Compose105Activity::class.java))
         list.add(ActivityItem("Compose104Activity", Compose104Activity::class.java))
         list.add(ActivityItem("Compose103Activity", Compose103Activity::class.java))
         list.add(ActivityItem("Compose102Activity", Compose102Activity::class.java))
