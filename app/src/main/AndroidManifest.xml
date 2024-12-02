@@ -30,6 +30,9 @@
             android:name=".compose.test105.Compose105Activity"
             android:exported="false" />
         <activity
+            android:name=".compose.test106.Compose106Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
