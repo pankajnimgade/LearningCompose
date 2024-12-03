@@ -3,7 +3,6 @@ package com.example.composetest101.compose.test103
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlin.random.Random
 
 data class GameUiState(
     val currentWord: String = ""
