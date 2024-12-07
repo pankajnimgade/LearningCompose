@@ -19,33 +19,16 @@
             android:exported="false"
             android:label="@string/title_activity_compose102"
             android:theme="@style/Theme.ComposeTest101" />
-        <activity
-            android:name=".compose.test101.Compose101Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test103.Compose103Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test104.Compose104Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test105.Compose105Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test106.Compose106Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test107.Compose107Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test108.Compose108Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test109.Compose109Activity"
-            android:exported="false" />
-        <activity
-            android:name=".compose.test110.Compose110Activity"
-            android:exported="false" />
+        <activity android:name=".compose.test101.Compose101Activity" android:exported="false" />
+        <activity android:name=".compose.test103.Compose103Activity" android:exported="false" />
+        <activity android:name=".compose.test104.Compose104Activity" android:exported="false" />
+        <activity android:name=".compose.test105.Compose105Activity" android:exported="false" />
+        <activity android:name=".compose.test106.Compose106Activity" android:exported="false" />
+        <activity android:name=".compose.test107.Compose107Activity" android:exported="false" />
+        <activity android:name=".compose.test108.Compose108Activity" android:exported="false" />
+        <activity android:name=".compose.test109.Compose109Activity" android:exported="false" />
+        <activity android:name=".compose.test110.Compose110Activity" android:exported="false" />
+        <activity android:name=".compose.test111.Compose111Activity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

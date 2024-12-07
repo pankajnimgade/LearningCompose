@@ -40,6 +40,7 @@ import com.example.composetest101.compose.test109.viewmodel.TodoViewModel
  * https://developer.android.com/codelabs/jetpack-compose-state#0
  * https://developer.android.com/codelabs/jetpack-compose-layouts#0
  * https://developer.android.com/develop/ui/compose/mental-model
+ * https://developer.android.com/codelabs/jetpack-compose-basics#0
  */
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 class Compose109Activity : ComponentActivity() {
