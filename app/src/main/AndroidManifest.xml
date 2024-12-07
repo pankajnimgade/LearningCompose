@@ -41,6 +41,12 @@
             android:name=".compose.test108.Compose108Activity"
             android:exported="false" />
         <activity
+            android:name=".compose.test109.Compose109Activity"
+            android:exported="false" />
+        <activity
+            android:name=".compose.test110.Compose110Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

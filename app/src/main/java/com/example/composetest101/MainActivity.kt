@@ -14,6 +14,8 @@ import com.example.composetest101.compose.test105.Compose105Activity
 import com.example.composetest101.compose.test106.Compose106Activity
 import com.example.composetest101.compose.test107.Compose107Activity
 import com.example.composetest101.compose.test108.Compose108Activity
+import com.example.composetest101.compose.test109.Compose109Activity
+import com.example.composetest101.compose.test110.Compose110Activity
 
 class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
 
@@ -33,6 +35,8 @@ class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
 
     private fun getListOfActivities(): List<ActivityItem> {
         val list: MutableList<ActivityItem> = mutableListOf()
+        list.add(ActivityItem("Compose110Activity", Compose110Activity::class.java))
+        list.add(ActivityItem("Compose109Activity", Compose109Activity::class.java))
         list.add(ActivityItem("Compose108Activity", Compose108Activity::class.java))
         list.add(ActivityItem("Compose107Activity", Compose107Activity::class.java))
         list.add(ActivityItem("Compose106Activity", Compose106Activity::class.java))
@@ -48,6 +52,4 @@ class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
         val intent = Intent(this@MainActivity, activityItem.clazz)
         startActivity(intent)
     }
-
-
 }
