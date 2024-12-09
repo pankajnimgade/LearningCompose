@@ -19,6 +19,9 @@
       <SelectionState runConfigName="ShowPreviewOfGreetings">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="Compose110Activity">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
