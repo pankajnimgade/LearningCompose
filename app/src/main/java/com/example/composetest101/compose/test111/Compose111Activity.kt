@@ -81,12 +81,10 @@ fun ShowPreviewOfMyApp() {
 /**Greetings Start*******************************************/
 @Composable
 private fun Greetings(
-    modifier: Modifier = Modifier,
-    names: List<String> = List(1000) { "Item: $it" }
+    modifier: Modifier = Modifier, names: List<String> = List(1000) { "Item: $it" }
 ) {
     Surface(
-        modifier = modifier.padding(vertical = 4.dp),
-        color = MaterialTheme.colorScheme.background
+        modifier = modifier.padding(vertical = 4.dp), color = MaterialTheme.colorScheme.background
     ) {
         LazyColumn {
             items(names) {
@@ -112,10 +110,8 @@ private fun Greeting(text: String = "Android", modifier: Modifier = Modifier) {
      */
     var expanded by rememberSaveable { mutableStateOf(false) }
     val extraPadding by animateDpAsState(
-        if (expanded) 48.dp else 0.dp,
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessLow
+        if (expanded) 48.dp else 0.dp, animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessLow
         )
     )
     Surface(
@@ -159,8 +155,7 @@ fun ShowPreviewOfGreeting() {
 /**OnBoardingScreen Start*******************************************/
 @Composable
 private fun OnboardingScreen(
-    modifier: Modifier = Modifier,
-    onContinueClicked: () -> Unit
+    modifier: Modifier = Modifier, onContinueClicked: () -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -169,9 +164,7 @@ private fun OnboardingScreen(
     ) {
         Text("Welcome to the Basics Codelabs!")
         Button(
-            modifier = modifier
-                .padding(vertical = 24.dp),
-            onClick = onContinueClicked
+            modifier = modifier.padding(vertical = 24.dp), onClick = onContinueClicked
         ) {
             Text(text = "Continue")
         }
