@@ -4,6 +4,9 @@ package com.example.composetest101.compose.test111
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,10 +24,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.coerceAtLeast
 import androidx.compose.ui.unit.dp
 import com.example.composetest101.compose.test102.ui.theme.ComposeTest101Theme
 
@@ -32,6 +37,8 @@ import com.example.composetest101.compose.test102.ui.theme.ComposeTest101Theme
  * https://developer.android.com/codelabs/jetpack-compose-basics#0
  *
  * https://www.youtube.com/watch?v=k3jvNqj4m08
+ *
+ * https://developer.android.com/courses/jetpack-compose/course
  */
 
 class Compose111Activity : ComponentActivity() {
@@ -52,7 +59,7 @@ class Compose111Activity : ComponentActivity() {
 /**MyApp Start*******************************************/
 @Composable
 private fun MyApp(modifier: Modifier = Modifier) {
-    var shouldShowOnboarding by remember { mutableStateOf(true) }
+    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
     if (shouldShowOnboarding) {
         OnboardingScreen() {
             shouldShowOnboarding = false
@@ -100,8 +107,14 @@ private fun Greeting(text: String = "Android", modifier: Modifier = Modifier) {
     /**
      * [remember] is used to guard against recomposition, so the state is not reset.
      */
-    var expanded by remember { mutableStateOf(false) }
-    var extraPadding = if (expanded) 48.dp else 0.dp
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    val extraPadding by animateDpAsState(
+        if (expanded) 48.dp else 0.dp,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        )
+    )
     Surface(
         color = MaterialTheme.colorScheme.primary,
         modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp)
@@ -110,10 +123,12 @@ private fun Greeting(text: String = "Android", modifier: Modifier = Modifier) {
             Column(
                 modifier = modifier
                     .weight(1f)
-                    .padding(bottom = extraPadding)
+                    .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ) {
                 Text(text = "Hello")
-                Text(text = "$text!", modifier = modifier)
+                Text(text = "$text!",
+                    modifier = modifier,
+                    style = MaterialTheme.typography.headlineMedium)
             }
             ElevatedButton(onClick = { expanded = !expanded }) {
                 Text(text = if (expanded) "Show less" else "Show more")
