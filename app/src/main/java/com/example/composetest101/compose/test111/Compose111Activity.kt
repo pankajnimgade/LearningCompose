@@ -15,7 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
+import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -59,13 +59,15 @@ class Compose111Activity : ComponentActivity() {
 /**MyApp Start*******************************************/
 @Composable
 private fun MyApp(modifier: Modifier = Modifier) {
+
     var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
-    if (shouldShowOnboarding) {
-        OnboardingScreen() {
-            shouldShowOnboarding = false
+
+    Surface(modifier) {
+        if (shouldShowOnboarding) {
+            OnboardingScreen() { shouldShowOnboarding = false }
+        } else {
+            Greetings()
         }
-    } else {
-        Greetings()
     }
 }
 
@@ -83,7 +85,8 @@ private fun Greetings(
     names: List<String> = List(1000) { "Item: $it" }
 ) {
     Surface(
-        modifier = modifier, color = MaterialTheme.colorScheme.background
+        modifier = modifier.padding(vertical = 4.dp),
+        color = MaterialTheme.colorScheme.background
     ) {
         LazyColumn {
             items(names) {
@@ -126,9 +129,11 @@ private fun Greeting(text: String = "Android", modifier: Modifier = Modifier) {
                     .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ) {
                 Text(text = "Hello")
-                Text(text = "$text!",
+                Text(
+                    text = "$text!",
                     modifier = modifier,
-                    style = MaterialTheme.typography.headlineMedium)
+                    style = MaterialTheme.typography.headlineMedium
+                )
             }
             ElevatedButton(onClick = { expanded = !expanded }) {
                 Text(text = if (expanded) "Show less" else "Show more")
@@ -165,8 +170,7 @@ private fun OnboardingScreen(
         Text("Welcome to the Basics Codelabs!")
         Button(
             modifier = modifier
-                .padding(24.dp)
-                .wrapContentSize(),
+                .padding(vertical = 24.dp),
             onClick = onContinueClicked
         ) {
             Text(text = "Continue")

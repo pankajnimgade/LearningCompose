@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.composetest101.compose.test107
 
 
@@ -16,12 +18,14 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -54,7 +58,7 @@ class Compose107Activity : ComponentActivity() {
 }
 
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 private fun ToDoScreen(toDoViewModel: ToDoViewModel) {
     Column(
@@ -112,7 +116,7 @@ fun ContentBody(toDoViewModel: ToDoViewModel) {
 @Composable
 fun ToDoCard(toDo: Todo) {
 
-    Card(modifier = Modifier.padding(4.dp), elevation = 4.dp) {
+    Card(modifier = Modifier.padding(4.dp), elevation = CardDefaults.cardElevation()) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -145,7 +149,7 @@ fun ShowPreviewOf() {
 private fun MyTopBar() {
     TopAppBar(
         title = { Text("To do List") },
-        modifier = Modifier.background(MaterialTheme.colors.primary) // Modifier applied properly
+        modifier = Modifier.background(MaterialTheme.colorScheme.primary) // Modifier applied properly
     )
 }
 
