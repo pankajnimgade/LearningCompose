@@ -29,6 +29,8 @@
         <activity android:name=".compose.test109.Compose109Activity" android:exported="false" />
         <activity android:name=".compose.test110.Compose110Activity" android:exported="false" />
         <activity android:name=".compose.test111.Compose111Activity" android:exported="false" />
+        <activity android:name=".compose.test112.Compose112Activity" android:exported="false" />
+        <activity android:name=".compose.test113.Compose113Activity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
