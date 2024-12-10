@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -37,13 +39,36 @@ class Compose112Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MessageCard()
+            Conversation()
         }
     }
 
 }
 
-private data class Message(val author: String, val body: String)
+@Composable
+fun Conversation(
+    modifier: Modifier = Modifier,
+    messages: List<Message> = createDummyListOfMessages()
+) {
+    LazyColumn {
+        items(messages){
+            MessageCard(message = it)
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ShowPreviewOfConversation() {
+    Conversation()
+}
+
+
+fun createDummyListOfMessages(): List<Message> {
+    return SampleData.conversationSample
+}
+
+data class Message(val author: String, val body: String)
 
 @Composable
 private fun MessageCard(message: Message = Message("Android", "Jetpack Compose")) {
