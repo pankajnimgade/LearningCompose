@@ -6,7 +6,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -55,11 +54,10 @@ class Compose112Activity : ComponentActivity() {
 
 @Composable
 fun Conversation(
-    modifier: Modifier = Modifier,
-    messages: List<Message> = createDummyListOfMessages()
+    modifier: Modifier = Modifier, messages: List<Message> = createDummyListOfMessages()
 ) {
     LazyColumn {
-        items(messages){
+        items(messages) {
             MessageCard(message = it)
         }
     }
@@ -86,9 +84,11 @@ private fun MessageCard(message: Message = Message("Android", "Jetpack Compose")
     )
     ComposeTest101Theme {
         Surface {
-            Row(modifier = Modifier
-                .padding(all = 8.dp)
-                .fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .padding(all = 8.dp)
+                    .fillMaxWidth()
+            ) {
                 Image(
                     painter = painterResource(R.drawable.profile_picture),
                     contentDescription = "Contact profile picture",
@@ -113,7 +113,10 @@ private fun MessageCard(message: Message = Message("Android", "Jetpack Compose")
                         color = surfaceColor,
                         shape = MaterialTheme.shapes.medium,
                         shadowElevation = 1.dp,
-                        modifier = Modifier.animateContentSize().padding(1.dp)) {
+                        modifier = Modifier
+                            .animateContentSize()
+                            .padding(1.dp)
+                    ) {
                         Text(
                             text = message.body,
                             modifier = Modifier.padding(all = 4.dp),
@@ -129,10 +132,7 @@ private fun MessageCard(message: Message = Message("Android", "Jetpack Compose")
 
 @Preview(showBackground = true, widthDp = 250, heightDp = 150)
 @Preview(
-    showBackground = true,
-    widthDp = 250,
-    heightDp = 150,
-    uiMode = Configuration.UI_MODE_NIGHT_YES
+    showBackground = true, widthDp = 250, heightDp = 150, uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
 fun ShowPreviewOfMessageCard() {
