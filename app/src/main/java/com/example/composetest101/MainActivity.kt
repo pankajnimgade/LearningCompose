@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), ActivityAdapter.Listener {
 
     private fun getListOfActivities(): List<ActivityItem> {
         val list: MutableList<ActivityItem> = mutableListOf()
-        list.add(ActivityItem("Compose114Activity", Compose114Activity::class.java))
+//        list.add(ActivityItem("Compose114Activity", Compose114Activity::class.java))
         list.add(ActivityItem("Compose113Activity", Compose113Activity::class.java))
         list.add(ActivityItem("Compose112Activity", Compose112Activity::class.java))
         list.add(ActivityItem("Compose111Activity", Compose111Activity::class.java))
