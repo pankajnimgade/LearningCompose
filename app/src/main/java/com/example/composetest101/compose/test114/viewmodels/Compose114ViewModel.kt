@@ -20,8 +20,7 @@ class Compose114ViewModel : ViewModel() {
         TAG = this.javaClass.simpleName
     }
 
-    var list = mutableStateListOf<Quote>()
-        private set
+    val list = mutableStateListOf<Quote>()
 
     fun getQuotes(text: String) {
 

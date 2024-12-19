@@ -32,6 +32,7 @@
         <activity android:name=".compose.test112.Compose112Activity" android:exported="false" />
         <activity android:name=".compose.test113.Compose113Activity" android:exported="false" />
         <activity android:name=".compose.test114.Compose114Activity" android:exported="false" />
+        <activity android:name=".compose.test115.Compose115Activity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
