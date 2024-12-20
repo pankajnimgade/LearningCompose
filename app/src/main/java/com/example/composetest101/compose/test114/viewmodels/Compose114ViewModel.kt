@@ -2,6 +2,7 @@ package com.example.composetest101.compose.test114.viewmodels
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.composetest101.compose.test114.datamodels.Quote
 import com.example.composetest101.compose.test114.datamodels.QuoteResponse
@@ -21,6 +22,7 @@ class Compose114ViewModel : ViewModel() {
     }
 
     val list = mutableStateListOf<Quote>()
+    val listLiveData: MutableLiveData<List<Quote>> = MutableLiveData()
 
     fun getQuotes(text: String) {
 
@@ -32,6 +34,8 @@ class Compose114ViewModel : ViewModel() {
                     Log.d(TAG, "success: $it")
                     list.clear()
                     list.addAll(it.quotes)
+
+                    listLiveData.postValue(it.quotes)
                 }
             }
 

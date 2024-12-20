@@ -22,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,6 +37,7 @@ class Compose114Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getQuotes("")
+
         setContent {
             Scaffold(
                 topBar = {
@@ -44,6 +46,7 @@ class Compose114Activity : ComponentActivity() {
             ) { innerPadding ->
                 Column(modifier = Modifier.padding(innerPadding)) {
 
+                    val listState = viewModel.listLiveData.observeAsState()
                     Text(text = "Something to be")
                     MySpace()
                     LazyColumn(
@@ -56,7 +59,7 @@ class Compose114Activity : ComponentActivity() {
                         )
                     ) {
 
-                        items(viewModel.list.toList()) {
+                        items(listState.value ?: emptyList()) {
                             Column(
                                 modifier = Modifier.padding(
                                     PaddingValues(
